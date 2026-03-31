@@ -14,6 +14,10 @@ export interface RecommendationFormValues {
   plantName: string;
   location: string;
   section: string;
+  equipmentId: string;
+  equipmentType: string;
+  equipmentDesc: string;
+  repairreplacementrequired: string;
   recommendationDescription: string;
   recommendationType: string;
   consequenceSelectionType: string;
@@ -54,6 +58,10 @@ const emptyValues: RecommendationFormValues = {
   plantName: "",
   location: "",
   section: "",
+  equipmentId: "",
+  equipmentType: "",
+  equipmentDesc: "",
+  repairreplacementrequired: "",
   recommendationDescription: "",
   recommendationType: "",
   consequenceSelectionType: "",
@@ -92,16 +100,38 @@ const emptyValues: RecommendationFormValues = {
 // ─── Options ────────────────────────────────────────────────────────────────
 const sourceOptions: SelectOptions[] = [
   { value: "im", label: "IM" },
-  { value: "si", label: "SI" },
-  { value: "hrc", label: "HRC" },
-  { value: "dra", label: "DRA" },
+  { value: "hra", label: "HRA" },
+  { value: "dsc", label: "DSC" },
   { value: "legal", label: "Legal" },
-  { value: "dss", label: "CSM" },
+  { value: "dss", label: "DSS" },
+  { value: "csm", label: "CSM" },
   { value: "internal_audit", label: "Internal Audit" },
   { value: "external_audit", label: "External Audit" },
+  { value: "linewalk", label: "Linewalk" },
+  { value: "apex", label: "Apex" },
+  { value: "psm", label: "PSM" },
+  { value: "bhm", label: "BHM" },
+  { value: "psi", label: "PSI" },
+  { value: "pha", label: "PHA" },
+  { value: "moc", label: "MOC" },
+  { value: "pssr", label: "PSSR" },
+  { value: "erp", label: "ERP" },
+  { value: "training", label: "Training" },
+  { value: "communication", label: "Communication" },
+  { value: "governance", label: "Governance" },
+  { value: "dss_bhm_psm", label: "DSS BHM PSM" },
+  { value: "dss_hra", label: "DSS HRA" },
+  { value: "dss_dsc", label: "DSS DSC" },
+  { value: "dss_si", label: "DSS SI" },
+  { value: "dss_im", label: "DSS IM" },
+  { value: "dss_governance", label: "DSS Governance" },
+  { value: "dss_r_t", label: "DSS R&T" },
+  { value: "dss_csm", label: "DSS CSM" },
+  { value: "fire_audit", label: "Fire Audit" },
 ];
 
 const plantNameOptions: SelectOptions[] = [
+    { value: "all", label: "All" },
   { value: "sms1", label: "SMS1" },
   { value: "sms2", label: "SMS2" },
   { value: "ldp1", label: "LDP1" },
@@ -152,10 +182,13 @@ const consequenceSelectionTypeOptions: SelectOptions[] = [
 ];
 
 const recommendationTypeOptions: SelectOptions[] = [
-  { value: "corrective", label: "Legal Impact" },
-  { value: "preventive", label: "Risk Reduction" },
-  { value: "predictive", label: "Predictive" },
-  { value: "urgent", label: "Urgent" },
+  { value: "risk_reduction", label: "Risk Reduction" },
+  { value: "safety_assurance", label: "Safety Assurance" },
+  { value: "quality_improvement", label: "Quality Improvement" },
+  { value: "productivity_improvement", label: "Productivity Improvement" },
+  { value: "environment_impact", label: "Environment Impact" },
+  { value: "financial_impact", label: "Financial Impact" },
+  { value: "legal_impact", label: "Legal Impact" },
 ];
 
 const injuryPotentialOptions: SelectOptions[] = [
@@ -171,6 +204,11 @@ const shutdownOptions: SelectOptions[] = [
   { value: "no", label: "No" },
 ];
 
+const repairreplacementrequiredOptions: SelectOptions[] = [
+    { value: "yes", label: "Yes" },
+  { value: "no", label: "No" },
+]
+
 const statusOptions: SelectOptions[] = [
   { value: "open", label: "Open" },
   { value: "close", label: "Close" },
@@ -182,17 +220,24 @@ const yesNoOptions: SelectOptions[] = [
   { value: "no", label: "No" },
 ];
 
+const equipmentTypeOptions: SelectOptions[] = [
+   { value: "Type1", label: "Type 1" },
+  { value: "Type2", label: "Type 2" },
+    { value: "Type3", label: "Type 3" },
+
+]
+
 // ─── Sections ───────────────────────────────────────────────────────────────
 const sections = [
   {
     title: "1. Basic Identification & Location Details",
-    fields: ["source", "plantName", "location", "section"],
-    requiredFields: ["source", "plantName", "location"],
+    fields: ["source", "plantName", "location", "section", "equipmentId", "equipmentType", "equipmentDesc"],
+    requiredFields: ["source", "plantName", "location", "equipmentId", "equipmentType", "equipmentDesc"],
   },
   {
     title: "2. Issue / Requirement Details",
-    fields: ["recommendationDescription", "recommendationType"],
-    requiredFields: ["recommendationDescription", "recommendationType"],
+    fields: ["recommendationDescription", "recommendationType", "repairreplacementrequired"],
+    requiredFields: ["recommendationDescription", "recommendationType", "repairreplacementrequired"],
   },
   {
     title: "3. Risk Assessment (Before Implementation)",
@@ -242,6 +287,10 @@ const validationSchema = Yup.object().shape({
   plantName: Yup.string().required("Plant Name is required"),
   location: Yup.string().required("Location is required"),
   section: Yup.string(),
+  equipmentId: Yup.string(),
+  equipmentType: Yup.string(),
+  equipmentDesc: Yup.string(),
+  repairreplacementrequired: Yup.string().required("Repair/Replacement Required is required"),
   recommendationDescription: Yup.string().required("Recommendation Description is required"),
   recommendationType: Yup.string().required("Recommendation Type is required"),
   consequenceSelectionType: Yup.string(),
@@ -450,7 +499,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="plantName">
             <SelectField
-              label="Plant Name *"
+              label="SP *"
               name="plantName"
               value={plantNameOptions.find((o) => o.value === values.plantName) || null}
               options={plantNameOptions}
@@ -486,13 +535,76 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
               name="section"
               value={values.section}
               onChange={handleChange}
-              
               touched={touched.section}
               errors={errors.section}
               placeholder="Enter Section Name"
             />
           </div>
         );
+
+
+        case "equipmentId":
+        return (
+          <div className="col-md-3" key="equipmentId">
+            <InputField
+              label="Equipment ID"
+              type="text"
+              name="equipmentId"
+              value={values.equipmentId}
+              onChange={handleChange}
+              touched={touched.equipmentId}
+              errors={errors.equipmentId}
+              placeholder="Enter Equipment ID"
+            />
+          </div>
+        );
+
+
+         case "equipmentDesc":
+        return (
+          <div className="col-md-3" key="equipmentDesc">
+            <InputField
+              label="Equipment Description"
+              type="text"
+              name="equipmentDesc"
+              value={values.equipmentDesc}
+              onChange={handleChange}
+              touched={touched.equipmentDesc}
+              errors={errors.equipmentDesc}
+              placeholder="Enter Equipment Desc"
+            />
+          </div>
+        );
+
+         case "equipmentType":
+        return (
+          <div className="col-md-3" key="equipmentType">
+            <SelectField
+              label="Equipment Type"
+              name="equipmentType"
+              value={equipmentTypeOptions.find((o) => o.value === values.equipmentType) || null}
+              options={equipmentTypeOptions}
+              onChange={(opt: SelectOptions) => setFieldValue("equipmentType", opt.value)}
+              placeholder="Select Equipment Type"
+            />
+          </div>
+        );
+        
+
+         case "repairreplacementrequired":
+        return (
+          <div className="col-md-3" key="repairreplacementrequired">
+            <SelectField
+              label="Repair/Replacement Required"
+              name="repairreplacementrequired"
+              value={repairreplacementrequiredOptions.find((o) => o.value === values.repairreplacementrequired) || null}
+              options={repairreplacementrequiredOptions}
+              onChange={(opt: SelectOptions) => setFieldValue("repairreplacementrequired", opt.value)}
+              placeholder="Select Yes/No"
+            />
+          </div>
+        );
+
       case "recommendationDescription":
         return (
           <div className="col-md-9" key="recommendationDescription">

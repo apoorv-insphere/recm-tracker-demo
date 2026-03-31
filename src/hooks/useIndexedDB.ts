@@ -20,10 +20,14 @@ export interface RecommendationRecord {
   plantName: string;
   location: string;
   section: string;
+  equipmentId: string;
+  equipmentDescription: string;
+  equipmentType: string
 
   // ── Section 2: Issue details ──────────────────────────────────────────────
   recommendationDescription: string;
   recommendationType: string;
+  repairreplacementrequired: string;
 
   // ── Section 3: Risk assessment ────────────────────────────────────────────
   consequenceSelectionType: string;
@@ -73,8 +77,7 @@ export interface RecommendationRecord {
   remarks: string;
 
   // ── Legacy / unused ───────────────────────────────────────────────────────
-  equipmentId?: string;
-  equipmentDescription?: string;
+
   roi?: string;
 }
 
