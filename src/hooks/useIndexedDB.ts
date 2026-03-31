@@ -6,6 +6,7 @@ const DB_VERSION = 1;
 const STORE_NAME = 'recommendations';
 
 export interface RecommendationRecord {
+  equipmentDesc: string;
   // ── Identity ──────────────────────────────────────────────────────────────
   id: string;
   recommendationNo: string;
