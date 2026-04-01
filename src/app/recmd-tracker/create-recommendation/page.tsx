@@ -281,58 +281,7 @@ const sections = [
 ];
 
 // ─── Validation ──────────────────────────────────────────────────────────────
-const validationSchema = Yup.object().shape({
-  source: Yup.string().required("Source is required"),
-  plantName: Yup.string().required("Plant Name is required"),
-  location: Yup.string().required("Location is required"),
-  section: Yup.string(),
-  equipmentId: Yup.string(),
-  equipmentType: Yup.string(),
-  repairreplacementrequired: Yup.string().required("Repair/Replacement Required is required"),
-  recommendationDescription: Yup.string().required("Recommendation Description is required"),
-  recommendationType: Yup.string().required("Recommendation Type is required"),
-  consequenceSelectionType: Yup.string(),
-  initialConsequence: Yup.string(),
-  initialLikelihood: Yup.string(),
-  initialRiskScore: Yup.string(),
-  injuryPotential: Yup.string(),
-  assetRepairCost: Yup.number().typeError("Must be a number").nullable(),
-  productionLossPerDay: Yup.number().typeError("Must be a number").nullable(),
-  potentialRiskImpactMin: Yup.number().typeError("Must be a number").nullable(),
-  potentialRiskImpactMedium: Yup.number().typeError("Must be a number").nullable(),
-  potentialRiskImpactMax: Yup.number().typeError("Must be a number").nullable(),
-  finalConsequence: Yup.string(),
-  finalLikelihood: Yup.string(),
-  finalRiskScore: Yup.string(),
-  benefitOfImplementation: Yup.string(),
-  estimatedCostForImplementation: Yup.number().typeError("Must be a number").nullable(),
-  shutdownRequirement: Yup.string(),
-  dateOfRecommendation: Yup.date().nullable().required("Date of Recommendation is required"),
-  targetImplementationDate: Yup.date()
-    .nullable()
-    .min(Yup.ref("dateOfRecommendation"), "Target date cannot be before recommendation date"),
-  actualImplementationDate: Yup.date().nullable(),
-  ageOfRecommendation: Yup.string(),
-  benefitAnalysisTargetDate: Yup.date().nullable(),
-  numberOfOverdueDays: Yup.number().typeError("Must be a number").nullable(),
-  recommendationInitiatedBy: Yup.string().required("Initiated By is required"),
-  discussedWithHOD: Yup.string(),
-  dateOfDiscussion: Yup.date().nullable(),
-  responsiblePersonForClosure: Yup.string(),
-  recommendationStatus: Yup.string(),
-  reasonForRejection: Yup.string().when("recommendationStatus", {
-    is: "reject",
-    then: (s) => s.required("Reason for rejection is required when status is Reject"),
-    otherwise: (s) => s.notRequired(),
-  }),
-  rejectedBy: Yup.string().when("recommendationStatus", {
-    is: "reject",
-    then: (s) => s.required("Rejected By is required when status is Reject"),
-    otherwise: (s) => s.notRequired(),
-  }),
-  eligibleForRecommendation: Yup.string(),
-  remarks: Yup.string(),
-});
+
 
 // ─── Props ───────────────────────────────────────────────────────────────────
 interface RecommendationFormProps {
@@ -432,18 +381,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         finalRiskScore: values.finalRiskScore || "0",
         source: values.source || "IM",
         location: values.location,
-        changeHistory: [
-          {
-            id: Date.now().toString(),
-            changedBy: values.recommendationInitiatedBy || "System",
-            changedAt: new Date().toISOString(),
-            changeType: "creation",
-            remarks: "Recommendation created",
-          },
-        ],
+       
       });
       setSavedRecNo(saved.recommendationNo);
       setShowSuccess(true);
+      
       setTimeout(() => router.push("/recmd-tracker"), 2000);
     } catch (error) {
       console.error("Failed to save:", error);
@@ -969,7 +911,6 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
               onChange={handleChange}
               
               touched={touched.recommendationInitiatedBy}
-              errors={errors.recommendationInitiatedBy}
               placeholder="Enter name"
             />
           </div>
@@ -1093,7 +1034,6 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
   return (
     <Formik
       initialValues={mergedInitialValues}
-      validationSchema={validationSchema}
       onSubmit={handleFinalSubmit}
       enableReinitialize
     >

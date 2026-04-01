@@ -193,8 +193,8 @@ const UpdateRecommendationPage = () => {
     return (
       <div className="container-fluid">
         <div className="alert alert-success m-3">
-          <h5>✅ Recommendation Updated</h5>
-          <p>Changes saved successfully. Redirecting back to the tracker…</p>
+          <h5>Recommendation Updated</h5>
+          <p>Changes saved successfully</p>
         </div>
       </div>
     );

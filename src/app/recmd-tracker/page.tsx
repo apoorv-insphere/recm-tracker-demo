@@ -108,6 +108,13 @@ const RecommendationTracker = () => {
         }
     };
 
+    const handleRefresh = () => {
+  // Remove the demo seeded flag from localStorage
+  localStorage.removeItem('recmd_demo_seeded');
+  // Reload the page to trigger demo data re-seeding
+  window.location.reload();
+};
+
     // Mock data for drafts
     const draftRecommendations: DraftRecommendation[] = [
         {
@@ -490,20 +497,20 @@ const RecommendationTracker = () => {
                                     className="img-fluid u-image"
                                 />
                             </button>
-                            <button
-                                type="button"
-                                className="iconBtn orange"
-                                onClick={resetFilters}
-                            >
-                                Refresh
-                                <img
-                                    width="25"
-                                    height="25"
-                                    alt="Refresh"
-                                    src="/images/svg/refresh-icon.svg"
-                                    className="img-fluid u-image"
-                                />
-                            </button>
+                           <button
+  type="button"
+  className="iconBtn orange"
+  onClick={handleRefresh}  // Changed from resetFilters to handleRefresh
+>
+  Refresh
+  <img
+    width="25"
+    height="25"
+    alt="Refresh"
+    src="/images/svg/refresh-icon.svg"
+    className="img-fluid u-image"
+  />
+</button>
                         </div>
                         <div>
                             <Link href={APP_URL.CREATE_RECMD}>
