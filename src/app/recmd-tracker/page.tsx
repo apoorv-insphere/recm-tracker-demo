@@ -6,6 +6,7 @@ import router from "next/router";
 import { useEffect } from "react";
 import { useIndexedDB, RecommendationRecord } from "@/src/hooks/useIndexedDB";
 import { APP_URL } from "@/src/config/constants";
+import { populateDemoData } from "@/src/utlis/demoData";
 
 
 interface DraftRecommendation {
@@ -72,7 +73,6 @@ const RecommendationTracker = () => {
 
     const [recommendations, setRecommendations] = useState<RecommendationRecord[]>([]);
     const [loading, setLoading] = useState(true);
-    const [showDemoButton, setShowDemoButton] = useState(false);
 
     useEffect(() => {
         if (isReady) {
@@ -80,14 +80,20 @@ const RecommendationTracker = () => {
         }
     }, [isReady]);
 
+    const DEMO_SEEDED_KEY = 'recmd_demo_seeded';
+
     const loadRecommendations = async () => {
         setLoading(true);
         try {
+            const alreadySeeded = localStorage.getItem(DEMO_SEEDED_KEY);
+
+            if (!alreadySeeded) {
+                await populateDemoData(saveRecommendation);
+                localStorage.setItem(DEMO_SEEDED_KEY, 'true');
+            }
+
             const data = await getAllRecommendations();
             setRecommendations(data);
-
-            // Show demo button if no data exists
-            setShowDemoButton(data.length === 0);
         } catch (error) {
             console.error('Failed to load:', error);
         } finally {
@@ -528,11 +534,11 @@ const RecommendationTracker = () => {
                                             <th style={{ minWidth: "90px" }}>S no</th>
                                             <th style={{ minWidth: "90px" }}>Date</th>
                                             <th style={{ minWidth: "120px" }}>Recommendation ID.</th>
-                                            <th style={{ minWidth: "200px" }}>Recmd Description</th>
+                                            <th style={{ minWidth: "200px" }}>Description</th>
                                             <th style={{ minWidth: "120px" }}>Source</th>
-                                            <th style={{ minWidth: "120px" }}>Location</th>
-                                            <th style={{ minWidth: "100px" }}>Risk Score</th>
-                                            <th style={{ minWidth: "100px" }}>Est. Cost (₹)</th>
+                                            <th style={{ minWidth: "120px" }}>Location/SP</th>
+                                            <th style={{ minWidth: "100px" }}>Risk Score (Initial/Final)</th>
+                                            <th style={{ minWidth: "100px" }}>Est. Cost (in Cr)</th>
                                             <th style={{ minWidth: "120px" }}>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -545,20 +551,21 @@ const RecommendationTracker = () => {
                                                         {item.dateOfRecommendation instanceof Date
                                                             ? item.dateOfRecommendation.toLocaleDateString()
                                                             : new Date(item.dateOfRecommendation).toLocaleDateString()}
-                                                    </td>                          <td>
+                                                    </td>
+                                                    <td>
                                                         <span style={{ color: "#005A8C", fontWeight: 600 }}>
                                                             {item.recommendationNo}
                                                         </span>
                                                     </td>
-                                                    <td>{ }{item.recommendationDescription}</td>
+                                                    <td >{item.recommendationDescription}</td>
                                                     <td>{item.source}</td>
-                                                    <td>{item.location}</td>
+                                                    <td>{item.location}/{item.plantName}</td>
                                                     <td>
-                                                        <span className={getRiskLevelColor(item.finalRiskScore)}>
-                                                            {item.finalRiskScore}
+                                                        <span>
+                                                            {item.finalRiskScore}/{item.finalRiskScore}
                                                         </span>
                                                     </td>
-                                                    <td>₹{item.estimatedCost.toLocaleString()}</td>
+                                                    <td>{item.estimatedCost.toLocaleString()}</td>
                                                     <td>
                                                         {item.status}
                                                     </td>

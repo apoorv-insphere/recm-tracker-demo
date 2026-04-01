@@ -99,125 +99,124 @@ const emptyValues: RecommendationFormValues = {
 
 // ─── Options ────────────────────────────────────────────────────────────────
 const sourceOptions: SelectOptions[] = [
-  { value: "im", label: "IM" },
-  { value: "hra", label: "HRA" },
-  { value: "dsc", label: "DSC" },
-  { value: "legal", label: "Legal" },
-  { value: "dss", label: "DSS" },
-  { value: "csm", label: "CSM" },
-  { value: "internal_audit", label: "Internal Audit" },
-  { value: "external_audit", label: "External Audit" },
-  { value: "linewalk", label: "Linewalk" },
-  { value: "apex", label: "Apex" },
-  { value: "psm", label: "PSM" },
-  { value: "bhm", label: "BHM" },
-  { value: "psi", label: "PSI" },
-  { value: "pha", label: "PHA" },
-  { value: "moc", label: "MOC" },
-  { value: "pssr", label: "PSSR" },
-  { value: "erp", label: "ERP" },
-  { value: "training", label: "Training" },
-  { value: "communication", label: "Communication" },
-  { value: "governance", label: "Governance" },
-  { value: "dss_bhm_psm", label: "DSS BHM PSM" },
-  { value: "dss_hra", label: "DSS HRA" },
-  { value: "dss_dsc", label: "DSS DSC" },
-  { value: "dss_si", label: "DSS SI" },
-  { value: "dss_im", label: "DSS IM" },
-  { value: "dss_governance", label: "DSS Governance" },
-  { value: "dss_r_t", label: "DSS R&T" },
-  { value: "dss_csm", label: "DSS CSM" },
-  { value: "fire_audit", label: "Fire Audit" },
+  { value: "IM", label: "IM" },
+  { value: "HRA", label: "HRA" },
+  { value: "DSC", label: "DSC" },
+  { value: "Legal", label: "Legal" },
+  { value: "DSS", label: "DSS" },
+  { value: "CSM", label: "CSM" },
+  { value: "Internal Audit", label: "Internal Audit" },
+  { value: "External Audit", label: "External Audit" },
+  { value: "Linewalk", label: "Linewalk" },
+  { value: "Apex", label: "Apex" },
+  { value: "PSM", label: "PSM" },
+  { value: "BHM", label: "BHM" },
+  { value: "PSI", label: "PSI" },
+  { value: "PHA", label: "PHA" },
+  { value: "MOC", label: "MOC" },
+  { value: "PSSR", label: "PSSR" },
+  { value: "ERP", label: "ERP" },
+  { value: "Training", label: "Training" },
+  { value: "Communication", label: "Communication" },
+  { value: "Governance", label: "Governance" },
+  { value: "DSS BHM PSM", label: "DSS BHM PSM" },
+  { value: "DSS HRA", label: "DSS HRA" },
+  { value: "DSS DSC", label: "DSS DSC" },
+  { value: "DSS SI", label: "DSS SI" },
+  { value: "DSS IM", label: "DSS IM" },
+  { value: "DSS Governance", label: "DSS Governance" },
+  { value: "DSS R&T", label: "DSS R&T" },
+  { value: "DSS CSM", label: "DSS CSM" },
+  { value: "Fire Audit", label: "Fire Audit" },
 ];
 
 const plantNameOptions: SelectOptions[] = [
-    { value: "all", label: "All" },
-  { value: "sms1", label: "SMS1" },
-  { value: "sms2", label: "SMS2" },
-  { value: "ldp1", label: "LDP1" },
-  { value: "ldp2", label: "LDP2" },
-  { value: "pp", label: "PP" },
-  { value: "ce", label: "CE" },
-  { value: "pm", label: "PM" },
-  { value: "bm", label: "BM" },
-  { value: "hsm", label: "HSM" },
-  { value: "crm", label: "CRM" },
-  { value: "ssd", label: "SSD" },
-  { value: "log", label: "LOG" },
-  { value: "bf1", label: "BF1" },
-  { value: "bf2", label: "BF2" },
-  { value: "1710_o2", label: "1710 O2" },
-  { value: "co", label: "CO" },
-  { value: "dri", label: "DRI" },
-  { value: "sp", label: "SP" },
-  { value: "co_project", label: "CO Project" },
-  { value: "cgp", label: "CGP" },
-  { value: "2400_o2", label: "2400 O2" },
-  { value: "cu_project", label: "CU Project" },
-  { value: "cu_opn", label: "CU Opn" },
-  { value: "chp", label: "CHP" },
-  { value: "cw", label: "CW" },
-  { value: "cc_project", label: "CC Project" },
-  { value: "rmhs_opn", label: "RMHS Opn" },
-  { value: "rmhs_project", label: "RMHS Project" },
-  { value: "all", label: "All" },
-  { value: "bf", label: "BF" },
-  { value: "1200_o2", label: "1200 O2" },
-  { value: "h2", label: "H2" },
-  { value: "g11", label: "G11" },
-  { value: "h11", label: "H11" },
-  { value: "shramik_vihar", label: "Shramik Vihar" },
-  { value: "hostel_3", label: "Hostel 3" },
-  { value: "pellet", label: "Pellet" },
-  { value: "pipe_conveyor_proj", label: "Pipe Conveyor Proj" },
-  { value: "township", label: "Township" },
-  { value: "hotel", label: "Hotel" },
+  { value: "All", label: "All" },
+  { value: "SMS1", label: "SMS1" },
+  { value: "SMS2", label: "SMS2" },
+  { value: "LDP1", label: "LDP1" },
+  { value: "LDP2", label: "LDP2" },
+  { value: "PP", label: "PP" },
+  { value: "CE", label: "CE" },
+  { value: "PM", label: "PM" },
+  { value: "BM", label: "BM" },
+  { value: "HSM", label: "HSM" },
+  { value: "CRM", label: "CRM" },
+  { value: "SSD", label: "SSD" },
+  { value: "LOG", label: "LOG" },
+  { value: "BF1", label: "BF1" },
+  { value: "BF2", label: "BF2" },
+  { value: "1710 O2", label: "1710 O2" },
+  { value: "CO", label: "CO" },
+  { value: "DRI", label: "DRI" },
+  { value: "SP", label: "SP" },
+  { value: "CO Project", label: "CO Project" },
+  { value: "CGP", label: "CGP" },
+  { value: "2400 O2", label: "2400 O2" },
+  { value: "CU Project", label: "CU Project" },
+  { value: "CU Opn", label: "CU Opn" },
+  { value: "CHP", label: "CHP" },
+  { value: "CW", label: "CW" },
+  { value: "CC Project", label: "CC Project" },
+  { value: "RMHS Opn", label: "RMHS Opn" },
+  { value: "RMHS Project", label: "RMHS Project" },
+  { value: "BF", label: "BF" },
+  { value: "1200 O2", label: "1200 O2" },
+  { value: "H2", label: "H2" },
+  { value: "G11", label: "G11" },
+  { value: "H11", label: "H11" },
+  { value: "Shramik Vihar", label: "Shramik Vihar" },
+  { value: "Hostel 3", label: "Hostel 3" },
+  { value: "Pellet", label: "Pellet" },
+  { value: "Pipe Conveyor Proj", label: "Pipe Conveyor Proj" },
+  { value: "Township", label: "Township" },
+  { value: "Hotel", label: "Hotel" }
 ];
 
 const consequenceSelectionTypeOptions: SelectOptions[] = [
-  { value: "people", label: "People" },
-  { value: "environment", label: "Environment" },
-  { value: "asset", label: "Asset" },
-  { value: "financial", label: "Financial" },
+  { value: "People", label: "People" },
+  { value: "Environment", label: "Environment" },
+  { value: "Asset", label: "Asset" },
+  { value: "Financial", label: "Financial" },
 ];
 
 const recommendationTypeOptions: SelectOptions[] = [
-  { value: "risk_reduction", label: "Risk Reduction" },
-  { value: "safety_assurance", label: "Safety Assurance" },
-  { value: "quality_improvement", label: "Quality Improvement" },
-  { value: "productivity_improvement", label: "Productivity Improvement" },
-  { value: "environment_impact", label: "Environment Impact" },
-  { value: "financial_impact", label: "Financial Impact" },
-  { value: "legal_impact", label: "Legal Impact" },
+  { value: "Risk Reduction", label: "Risk Reduction" },
+  { value: "Safety Assurance", label: "Safety Assurance" },
+  { value: "Quality Improvement", label: "Quality Improvement" },
+  { value: "Productivity Improvement", label: "Productivity Improvement" },
+  { value: "Environment Impact", label: "Environment Impact" },
+  { value: "Financial Impact", label: "Financial Impact" },
+  { value: "Legal Impact", label: "Legal Impact" },
 ];
 
 const injuryPotentialOptions: SelectOptions[] = [
-  { value: "mtc", label: "MTC" },
-  { value: "lti", label: "LTI" },
-  { value: "fatal", label: "Fatal" },
-  { value: "firstaid", label: "First Aid" },
-  { value: "multiplefatal", label: "Multiple Fatal" },
+  { value: "MTC", label: "MTC" },
+  { value: "LTI", label: "LTI" },
+  { value: "Fatal", label: "Fatal" },
+  { value: "First Aid", label: "First Aid" },
+  { value: "Multiple Fatal", label: "Multiple Fatal" },
 ];
 
 const shutdownOptions: SelectOptions[] = [
-  { value: "yes", label: "Yes" },
-  { value: "no", label: "No" },
+  { value: "Yes", label: "Yes" },
+  { value: "No", label: "No" },
 ];
 
 const repairreplacementrequiredOptions: SelectOptions[] = [
-    { value: "yes", label: "Yes" },
-  { value: "no", label: "No" },
+    { value: "Yes", label: "Yes" },
+  { value: "No", label: "No" },
 ]
 
 const statusOptions: SelectOptions[] = [
-  { value: "open", label: "Open" },
-  { value: "close", label: "Close" },
-  { value: "reject", label: "Reject" },
+  { value: "Open", label: "Open" },
+  { value: "Close", label: "Close" },
+  { value: "Reject", label: "Reject" },
 ];
 
 const yesNoOptions: SelectOptions[] = [
-  { value: "yes", label: "Yes" },
-  { value: "no", label: "No" },
+  { value: "Yes", label: "Yes" },
+  { value: "No", label: "No" },
 ];
 
 const equipmentTypeOptions: SelectOptions[] = [
@@ -232,12 +231,12 @@ const sections = [
   {
     title: "1. Basic Identification & Location Details",
     fields: ["source", "plantName", "location", "section", "equipmentId", "equipmentType", "equipmentDesc"],
-    requiredFields: ["source", "plantName", "location", "equipmentId", "equipmentType", "equipmentDesc"],
+    requiredFields: [],
   },
   {
     title: "2. Issue / Requirement Details",
     fields: ["recommendationDescription", "recommendationType", "repairreplacementrequired"],
-    requiredFields: ["recommendationDescription", "recommendationType", "repairreplacementrequired"],
+    requiredFields: [],
   },
   {
     title: "3. Risk Assessment (Before Implementation)",
@@ -262,12 +261,12 @@ const sections = [
   {
     title: "7. Timeline & Dates",
     fields: ["dateOfRecommendation", "targetImplementationDate", "actualImplementationDate", "ageOfRecommendation", "benefitAnalysisTargetDate", "numberOfOverdueDays"],
-    requiredFields: ["dateOfRecommendation"],
+    requiredFields: [],
   },
   {
     title: "8. Responsibility & Approval",
     fields: ["recommendationInitiatedBy", "discussedWithHOD", "dateOfDiscussion", "responsiblePersonForClosure"],
-    requiredFields: ["recommendationInitiatedBy"],
+    requiredFields: [],
   },
   {
     title: "9. Status & Decision",
@@ -289,7 +288,6 @@ const validationSchema = Yup.object().shape({
   section: Yup.string(),
   equipmentId: Yup.string(),
   equipmentType: Yup.string(),
-  equipmentDesc: Yup.string(),
   repairreplacementrequired: Yup.string().required("Repair/Replacement Required is required"),
   recommendationDescription: Yup.string().required("Recommendation Description is required"),
   recommendationType: Yup.string().required("Recommendation Type is required"),
@@ -547,7 +545,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="equipmentId">
             <InputField
-              label="Equipment ID"
+              label="Equipment ID *"
               type="text"
               name="equipmentId"
               value={values.equipmentId}
@@ -562,9 +560,9 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
 
          case "equipmentDesc":
         return (
-          <div className="col-md-3" key="equipmentDesc">
+          <div className="col-md-6" key="equipmentDesc">
             <InputField
-              label="Equipment Description"
+              label="Equipment Description "
               type="text"
               name="equipmentDesc"
               value={values.equipmentDesc}
@@ -580,7 +578,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="equipmentType">
             <SelectField
-              label="Equipment Type"
+              label="Equipment Type *"
               name="equipmentType"
               value={equipmentTypeOptions.find((o) => o.value === values.equipmentType) || null}
               options={equipmentTypeOptions}
@@ -595,7 +593,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="repairreplacementrequired">
             <SelectField
-              label="Repair/Replacement Required"
+              label="Repair/Replacement Required *"
               name="repairreplacementrequired"
               value={repairreplacementrequiredOptions.find((o) => o.value === values.repairreplacementrequired) || null}
               options={repairreplacementrequiredOptions}
@@ -609,7 +607,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-9" key="recommendationDescription">
             <InputField
-              label="Recommendation Description *"
+              label="Recommendation Description "
               type="text"
               name="recommendationDescription"
               value={values.recommendationDescription}
@@ -639,7 +637,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="consequenceSelectionType">
             <SelectField
-              label="Consequence Selection Type"
+              label="Consequence Selection Type *"
               name="consequenceSelectionType"
               value={consequenceSelectionTypeOptions.find((o) => o.value === values.consequenceSelectionType) || null}
               options={consequenceSelectionTypeOptions}
@@ -652,7 +650,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="initialConsequence">
             <InputField
-              label="Initial Consequence"
+              label="Initial Consequence *"
               type="number"
               name="initialConsequence"
               value={values.initialConsequence}
@@ -667,7 +665,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="initialLikelihood">
             <InputField
-              label="Initial Likelihood"
+              label="Initial Likelihood *"
               type="number"
               name="initialLikelihood"
               value={values.initialLikelihood}
@@ -683,7 +681,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="initialRiskScore">
             <InputField
-              label="Initial Risk Score"
+              label="Initial Risk Score *"
               type="number"
               name="initialRiskScore"
               value={values.initialRiskScore}
@@ -699,7 +697,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="injuryPotential">
             <SelectField
-              label="Injury Potential"
+              label="Injury Potential *"
               name="injuryPotential"
               value={injuryPotentialOptions.find((o) => o.value === values.injuryPotential) || null}
               options={injuryPotentialOptions}
@@ -712,7 +710,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="assetRepairCost">
             <InputField
-              label="Asset Repair/Replacement Cost (₹)"
+              label="Asset Repair/Replacement Cost (₹) *"
               name="assetRepairCost"
               type="number"
               value={values.assetRepairCost}
@@ -728,7 +726,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="productionLossPerDay">
             <InputField
-              label="Cost of Production Loss per Day (₹)"
+              label="Cost of Production Loss per Day (₹) *"
               name="productionLossPerDay"
               type="number"
               value={values.productionLossPerDay}
@@ -744,7 +742,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="potentialRiskImpactMin">
             <InputField
-              label="Potential Risk Impact (Min) (in Cr) ₹"
+              label="Potential Risk Impact (Min) (in Cr) *"
               name="potentialRiskImpactMin"
               type="number"
               value={values.potentialRiskImpactMin}
@@ -760,7 +758,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="potentialRiskImpactMedium">
             <InputField
-              label="Potential Risk Impact (Medium) (in Cr) ₹"
+              label="Potential Risk Impact (Medium) (in Cr) *"
               name="potentialRiskImpactMedium"
               type="number"
               value={values.potentialRiskImpactMedium}
@@ -776,7 +774,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="potentialRiskImpactMax">
             <InputField
-              label="Potential Risk Impact (Max) (in Cr) ₹"
+              label="Potential Risk Impact (Max) (in Cr) *"
               name="potentialRiskImpactMax"
               type="number"
               value={values.potentialRiskImpactMax}
@@ -792,7 +790,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="finalConsequence">
             <InputField
-              label="Final Consequence"
+              label="Final Consequence *"
               name="finalConsequence"
               type="number"
               value={values.finalConsequence}
@@ -808,7 +806,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="finalLikelihood">
             <InputField
-              label="Final Likelihood"
+              label="Final Likelihood *"
               name="finalLikelihood"
               type="number"
               value={values.finalLikelihood}
@@ -824,7 +822,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-4" key="finalRiskScore">
             <InputField
-              label="Final Risk Score (Post Implementation)"
+              label="Final Risk Score (Post Implementation) *"
               type="number"
               name="finalRiskScore"
               value={values.finalRiskScore}
@@ -838,7 +836,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
           <div className="col-md-12" key="benefitOfImplementation">
             <InputField
               type="text"
-              label="Benefit of Implementing Recommendation"
+              label="Benefit of Implementing Recommendation *"
               name="benefitOfImplementation"
               value={values.benefitOfImplementation}
               onChange={handleChange}
@@ -853,7 +851,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="estimatedCostForImplementation">
             <InputField
-              label="Estimated Cost for Implementation (in Cr)"
+              label="Estimated Cost for Implementation (in Cr) *"
               name="estimatedCostForImplementation"
               type="number"
               value={values.estimatedCostForImplementation}
@@ -869,7 +867,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="shutdownRequirement">
             <SelectField
-              label="Shutdown Requirement"
+              label="Shutdown Requirement *"
               name="shutdownRequirement"
               value={shutdownOptions.find((o) => o.value === values.shutdownRequirement) || null}
               options={shutdownOptions}
@@ -897,7 +895,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="targetImplementationDate">
             <DatePickerField
-              label="Target Implementation Date"
+              label="Target Implementation Date *"
               name="targetImplementationDate"
               value={values.targetImplementationDate}
               onChange={(date: Date | null) => setFieldValue("targetImplementationDate", date)}
@@ -912,7 +910,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="actualImplementationDate">
             <DatePickerField
-              label="Actual Implementation Date"
+              label="Actual Implementation Date *"
               name="actualImplementationDate"
               value={values.actualImplementationDate}
               onChange={(date: Date | null) => setFieldValue("actualImplementationDate", date)}
@@ -925,7 +923,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="ageOfRecommendation">
             <InputField
-              label="Age of Recommendation (Days)"
+              label="Age of Recommendation (Days) *"
               type="number"
               name="ageOfRecommendation"
               value={values.ageOfRecommendation}
@@ -938,7 +936,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="benefitAnalysisTargetDate">
             <DatePickerField
-              label="Benefit Analysis Target Date"
+              label="Benefit Analysis Target Date *"
               name="benefitAnalysisTargetDate"
               value={values.benefitAnalysisTargetDate}
               onChange={(date: Date | null) => setFieldValue("benefitAnalysisTargetDate", date)}
@@ -951,7 +949,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="numberOfOverdueDays">
             <InputField
-              label="Number of Overdue Days"
+              label="Number of Overdue Days *"
               name="numberOfOverdueDays"
               type="number"
               value={values.numberOfOverdueDays}
@@ -980,7 +978,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="discussedWithHOD">
             <SelectField
-              label="Recommendation Discussed With HOD"
+              label="Recommendation Discussed With HOD *"
               name="discussedWithHOD"
               value={shutdownOptions.find((o) => o.value === values.discussedWithHOD) || null}
               options={shutdownOptions}
@@ -993,7 +991,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="dateOfDiscussion">
             <DatePickerField
-              label="Date of Discussion"
+              label="Date of Discussion *"
               name="dateOfDiscussion"
               value={values.dateOfDiscussion}
               onChange={(date: Date | null) => setFieldValue("dateOfDiscussion", date)}
@@ -1006,7 +1004,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="responsiblePersonForClosure">
             <InputField
-              label="Responsible Person for Closure"
+              label="Responsible Person for Closure *"
               type="text"
               name="responsiblePersonForClosure"
               value={values.responsiblePersonForClosure}
@@ -1019,7 +1017,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="recommendationStatus">
             <SelectField
-              label="Recommendation Status"
+              label="Recommendation Status *"
               name="recommendationStatus"
               value={statusOptions.find((o) => o.value === values.recommendationStatus) || null}
               options={statusOptions}
@@ -1032,7 +1030,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="reasonForRejection">
             <InputField
-              label="Reason for Rejection (if rejected)"
+              label="Reason for Rejection (if rejected) *"
               type="text"
               name="reasonForRejection"
               value={values.reasonForRejection}
@@ -1048,7 +1046,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="rejectedBy">
             <InputField
-              label="Rejected By"
+              label="Rejected By *"
               type="text"
               name="rejectedBy"
               value={values.rejectedBy}
@@ -1064,7 +1062,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({
         return (
           <div className="col-md-3" key="eligibleForRecommendation">
             <SelectField
-              label="Eligible for Recommendation"
+              label="Eligible for Recommendation *"
               name="eligibleForRecommendation"
               value={yesNoOptions.find((o) => o.value === values.eligibleForRecommendation) || null}
               options={yesNoOptions}
