@@ -528,7 +528,6 @@ const handleDelete = async (id: string) => {
                            <button
   type="button"
   className="iconBtn orange"
-  onClick={handleRefresh}  // Changed from resetFilters to handleRefresh
 >
   Refresh
   <img
