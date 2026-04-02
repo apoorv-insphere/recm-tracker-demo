@@ -487,7 +487,7 @@ export const populateDemoData = async (saveRecommendation: Function) => {
   const startDate = new Date(2024, 0, 1);
   const endDate = new Date(2026, 2, 31);
 
-  for (let i = 1; i <= 500; i++) {
+  for (let i = 1; i <= 300; i++) {
     const source = sourceOptions[Math.floor(Math.random() * sourceOptions.length)];
     const plantName = plantOptions[Math.floor(Math.random() * plantOptions.length)];
     const location = locationOptions[Math.floor(Math.random() * locationOptions.length)];
