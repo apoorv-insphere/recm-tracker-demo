@@ -9,6 +9,7 @@ import { APP_URL } from "@/src/config/constants";
 import { populateDemoData } from "@/src/utlis/demoData";
 
 
+
 interface DraftRecommendation {
     id: string;
     sn: string;
@@ -60,7 +61,7 @@ const RecommendationTracker = () => {
     const [selectedRecommendation, setSelectedRecommendation] = useState<Recommendation | null>(null);
     const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
 
-    const PAGE_SIZE_OPTIONS = [10, 25, 50, 100];
+    const PAGE_SIZE_OPTIONS = [10, 25, 50, 100, 200, 400, 800];
     const totalRecords = 45;
     const totalPages = Math.ceil(totalRecords / pageSize);
 
@@ -68,6 +69,7 @@ const RecommendationTracker = () => {
         getAllRecommendations,
         deleteRecommendation,
         saveRecommendation,
+        clearAllRecommendations,
         isReady
     } = useIndexedDB();
 
@@ -82,24 +84,31 @@ const RecommendationTracker = () => {
 
     const DEMO_SEEDED_KEY = 'recmd_demo_seeded';
 
-    const loadRecommendations = async () => {
-        setLoading(true);
-        try {
-            const alreadySeeded = localStorage.getItem(DEMO_SEEDED_KEY);
+   const loadRecommendations = async () => {
+  setLoading(true);
+  try {
+    const alreadySeeded = localStorage.getItem(DEMO_SEEDED_KEY);
+    
+    if (!alreadySeeded) {
+      await populateDemoData(saveRecommendation);
+      localStorage.setItem(DEMO_SEEDED_KEY, 'true');
+    }
+    
+    const data = await getAllRecommendations();
+    setRecommendations(data);
+  } catch (error) {
+    console.error('Failed to load:', error);
+  } finally {
+    setLoading(false);
+  }
+};
 
-            if (!alreadySeeded) {
-                await populateDemoData(saveRecommendation);
-                localStorage.setItem(DEMO_SEEDED_KEY, 'true');
-            }
+useEffect(() => {
+  if (isReady) {
+    loadRecommendations();
+  }
+}, [isReady]);
 
-            const data = await getAllRecommendations();
-            setRecommendations(data);
-        } catch (error) {
-            console.error('Failed to load:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
 
     const handleDelete = async (id: string) => {
         if (confirm('Are you sure you want to delete this recommendation?')) {
@@ -108,11 +117,30 @@ const RecommendationTracker = () => {
         }
     };
 
-    const handleRefresh = () => {
-  // Remove the demo seeded flag from localStorage
-  localStorage.removeItem('recmd_demo_seeded');
-  // Reload the page to trigger demo data re-seeding
-  window.location.reload();
+  // Replace your existing handleRefresh function with this:
+
+const handleRefresh = async () => {
+  try {
+    // Show loading state
+    setLoading(true);
+    
+    // Remove the demo seeded flag from localStorage
+    localStorage.removeItem(DEMO_SEEDED_KEY);
+    
+    // Clear all data from IndexedDB
+    await clearAllRecommendations();
+    
+    // Verify that data was cleared
+    const checkData = await getAllRecommendations();
+    console.log('Data after clear:', checkData.length); // Should be 0
+    
+    // Reload the page to trigger fresh data seeding
+    window.location.reload();
+  } catch (error) {
+    console.error('Failed to refresh data:', error);
+    alert('Failed to refresh. Please try again.');
+    setLoading(false);
+  }
 };
 
     // Mock data for drafts
@@ -639,7 +667,7 @@ const RecommendationTracker = () => {
                                             ))}
                                         </select>
                                         <span className="recordsWrapper__value">
-                                            {startIndex + 1}-{Math.min(endIndex, totalRecords)} of {totalRecords}{" "}
+                                            {startIndex + 1}-{Math.min(endIndex, totalRecords)} of {recommendations.length}{" "}
                                             records
                                         </span>
                                     </div>

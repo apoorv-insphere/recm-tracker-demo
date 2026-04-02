@@ -232,6 +232,24 @@ export const useIndexedDB = () => {
     });
   };
 
+ const clearAllRecommendations = async (): Promise<void> => {
+  const db = await openDB();
+  const transaction = db.transaction([STORE_NAME], 'readwrite');
+  const store = transaction.objectStore(STORE_NAME);
+  
+  return new Promise((resolve, reject) => {
+    const request = store.clear();
+    request.onsuccess = () => {
+      console.log('All recommendations cleared successfully');
+      resolve();
+    };
+    request.onerror = () => {
+      console.error('Failed to clear recommendations:', request.error);
+      reject(request.error);
+    };
+  });
+};
+
   return {
     isReady,
     error,
@@ -240,5 +258,6 @@ export const useIndexedDB = () => {
     getRecommendationById,
     updateRecommendation,
     deleteRecommendation,
+    clearAllRecommendations,
   };
 };
