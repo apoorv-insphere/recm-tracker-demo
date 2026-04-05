@@ -519,7 +519,7 @@ export const populateDemoData = async (saveRecommendation: Function) => {
       equipmentType: equipmentType,
       equipmentDescription: `${equipmentType} System ${String(i).padStart(3, '0')}`,
       recommendationDescription: recommendationDescriptions[descriptionIndex],
-      recommendationType: ['risk_reduction', 'safety_assurance', 'quality_improvement', 'productivity_improvement'][Math.floor(Math.random() * 4)],
+      recommendationType: ['Risk Reduction', 'Safety Assurance', 'Quality Improvement', 'Productivity Improvement'][Math.floor(Math.random() * 4)],
       consequenceSelectionType: ['people', 'asset', 'environment', 'financial'][Math.floor(Math.random() * 4)],
       initialConsequence: String(Math.floor(Math.random() * 5) + 1),
       initialLikelihood: String(Math.floor(Math.random() * 5) + 1),

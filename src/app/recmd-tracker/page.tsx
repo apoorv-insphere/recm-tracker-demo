@@ -84,64 +84,64 @@ const RecommendationTracker = () => {
 
     const DEMO_SEEDED_KEY = 'recmd_demo_seeded';
 
-  const loadRecommendations = async () => {
-  setLoading(true);
-  try {
-    const data = await getAllRecommendations();
-    
-    // Sort recommendations by date (newest first)
-    const sortedData = [...data].sort((a, b) => {
-      const dateA = new Date(a.dateOfRecommendation || a.createdAt || 0);
-      const dateB = new Date(b.dateOfRecommendation || b.createdAt || 0);
-      return dateB.getTime() - dateA.getTime();
-    });
-    
-    setRecommendations(sortedData);
-    populateDemoData(saveRecommendation);
-  } catch (error) {
-    console.error('Failed to load:', error);
-  } finally {
-    setLoading(false);
-  }
-};
+    const loadRecommendations = async () => {
+        setLoading(true);
+        try {
+            const data = await getAllRecommendations();
+
+            // Sort recommendations by date (newest first)
+            const sortedData = [...data].sort((a, b) => {
+                const dateA = new Date(a.dateOfRecommendation || a.createdAt || 0);
+                const dateB = new Date(b.dateOfRecommendation || b.createdAt || 0);
+                return dateB.getTime() - dateA.getTime();
+            });
+
+            setRecommendations(sortedData);
+            populateDemoData(saveRecommendation);
+        } catch (error) {
+            console.error('Failed to load:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
 
-const handleDelete = async (id: string) => {
-  if (confirm('Are you sure you want to delete this recommendation?')) {
-    await deleteRecommendation(id);
-    const data = await getAllRecommendations();
-    
-    // Sort after delete
-    const sortedData = [...data].sort((a, b) => {
-      const dateA = new Date(a.dateOfRecommendation || a.createdAt || 0);
-      const dateB = new Date(b.dateOfRecommendation || b.createdAt || 0);
-      return dateB.getTime() - dateA.getTime();
-    });
-    
-    setRecommendations(sortedData);
-  }
-};
+    const handleDelete = async (id: string) => {
+        if (confirm('Are you sure you want to delete this recommendation?')) {
+            await deleteRecommendation(id);
+            const data = await getAllRecommendations();
 
-  const handleRefresh = async () => {
-  try {
-    localStorage.removeItem(DEMO_SEEDED_KEY);
-    await clearAllRecommendations();
-    
-    // After clearing, reload and sort
-    const data = await getAllRecommendations();
-    const sortedData = [...data].sort((a, b) => {
-      const dateA = new Date(a.dateOfRecommendation || a.createdAt || 0);
-      const dateB = new Date(b.dateOfRecommendation || b.createdAt || 0);
-      return dateB.getTime() - dateA.getTime();
-    });
-    
-    setRecommendations(sortedData);
-    window.location.reload();
-  } catch (error) {
-    console.error('Failed to refresh data:', error);
-    alert('Failed to refresh. Please try again.');
-  }
-};
+            // Sort after delete
+            const sortedData = [...data].sort((a, b) => {
+                const dateA = new Date(a.dateOfRecommendation || a.createdAt || 0);
+                const dateB = new Date(b.dateOfRecommendation || b.createdAt || 0);
+                return dateB.getTime() - dateA.getTime();
+            });
+
+            setRecommendations(sortedData);
+        }
+    };
+
+    const handleRefresh = async () => {
+        try {
+            localStorage.removeItem(DEMO_SEEDED_KEY);
+            await clearAllRecommendations();
+
+            // After clearing, reload and sort
+            const data = await getAllRecommendations();
+            const sortedData = [...data].sort((a, b) => {
+                const dateA = new Date(a.dateOfRecommendation || a.createdAt || 0);
+                const dateB = new Date(b.dateOfRecommendation || b.createdAt || 0);
+                return dateB.getTime() - dateA.getTime();
+            });
+
+            setRecommendations(sortedData);
+            window.location.reload();
+        } catch (error) {
+            console.error('Failed to refresh data:', error);
+            alert('Failed to refresh. Please try again.');
+        }
+    };
 
     // Mock data for drafts
     const draftRecommendations: DraftRecommendation[] = [
@@ -525,19 +525,19 @@ const handleDelete = async (id: string) => {
                                     className="img-fluid u-image"
                                 />
                             </button>
-                           <button
-  type="button"
-  className="iconBtn orange"
->
-  Refresh
-  <img
-    width="25"
-    height="25"
-    alt="Refresh"
-    src="/images/svg/refresh-icon.svg"
-    className="img-fluid u-image"
-  />
-</button>
+                            <button
+                                type="button"
+                                className="iconBtn orange"
+                            >
+                                Refresh
+                                <img
+                                    width="25"
+                                    height="25"
+                                    alt="Refresh"
+                                    src="/images/svg/refresh-icon.svg"
+                                    className="img-fluid u-image"
+                                />
+                            </button>
                         </div>
                         <div>
                             <Link href={APP_URL.CREATE_RECMD}>
@@ -565,15 +565,37 @@ const handleDelete = async (id: string) => {
                                 <table className="table">
                                     <thead>
                                         <tr>
-                                            <th style={{ minWidth: "90px" }}>S no</th>
-                                            <th style={{ minWidth: "90px" }}>Date</th>
-                                            <th style={{ minWidth: "120px" }}>Recommendation ID.</th>
-                                            <th style={{ minWidth: "200px" }}>Description</th>
-                                            <th style={{ minWidth: "120px" }}>Source</th>
-                                            <th style={{ minWidth: "120px" }}>Location/SP</th>
-                                            <th style={{ minWidth: "100px" }}>Risk Score (Initial/Final)</th>
-                                            <th style={{ minWidth: "100px" }}>Est. Cost (in Cr)</th>
-                                            <th style={{ minWidth: "120px" }}>Status</th>
+                                            <th >S no</th>
+                                            <th >Date of Recommendation</th>
+                                            <th >Recommendation ID.</th>
+                                            <th>Recommendation Type</th>
+                                            <th>Source</th>
+                                            <th>SP</th>
+                                            <th>Equipment ID/Type/Desc</th>
+                                            <th>Description</th>
+                                            <th>Repair/Replacement Required</th>
+                                            <th>Consequence Type</th>
+                                            <th>Consequence/Likelihood/Risk Score (Initial)</th>
+                                            <th>Injury Potential</th>
+                                            <th>Asset Cost</th>
+                                            <th>Cost of Production lost PD</th>
+                                            <th>Potential Risk Impact (Min/Medium/Max)</th>
+                                            <th>Consequence/Likelihood/Risk Score (Final)</th>
+                                            <th>Benefits</th>
+                                            <th>Est. Cost (in Cr)</th>
+                                            <th>Shutdown</th>
+                                            <th>Tgt Date</th>
+                                            <th>Actual Implementation Date</th>
+                                            <th>Age</th>
+                                            <th>Benefit Analysis Tgt Date</th>
+                                            <th>Total Overdue Days</th>
+                                            <th>Initiated By</th>
+                                            <th>Discussed with HOD/Discussion Date</th>
+                                            <th>Responsible Person</th>
+                                            <th >Status</th>
+                                            <th>Is Rejected/Reason/Rejected By</th>
+                                            <th>Eligible for Recommendation</th>
+                                            <th>Remarks (Any)</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -591,18 +613,78 @@ const handleDelete = async (id: string) => {
                                                             {item.recommendationNo}
                                                         </span>
                                                     </td>
-                                                    <td >{item.recommendationDescription}</td>
+                                                    <td>{item.recommendationType}</td>
                                                     <td>{item.source}</td>
-                                                    <td>{item.location}/{item.plantName}</td>
+                                                    <td>{item.plantName}</td>
+                                                    <td>{item.equipmentType}{" - "}{item.equipmentId}{" - "}{item.equipmentDesc}</td>
+                                                    <td >{item.recommendationDescription}</td>
+                                                    <td>{item.repairreplacementrequired}</td>
+                                                    <td>{item.consequenceSelectionType}</td>
                                                     <td>
-                                                        <span>
-                                                            {item.finalRiskScore}/{item.finalRiskScore}
-                                                        </span>
+                                                        {item.initialConsequence}/{item.initialLikelihood}/{item.initialRiskScore}
                                                     </td>
-                                                    <td>{item.estimatedCost.toLocaleString()}</td>
+                                                    <td>
+                                                        {item.injuryPotential}
+                                                    </td>
+                                                    <td>
+                                                        {item.assetRepairCost}
+                                                    </td>
+                                                    <td>
+                                                        {item.productionLossPerDay}
+                                                    </td>
+                                                    <td>
+                                                        {item.potentialRiskImpactMin}/{item.potentialRiskImpactMedium}/{item.potentialRiskImpactMax}
+                                                    </td>
+                                                    <td>
+                                                        {item.finalConsequence}/{item.finalLikelihood}/{item.finalRiskScore}
+                                                    </td>
+                                                    <td>
+                                                        {item.benefitOfImplementation}
+                                                    </td>
+                                                    <td>
+                                                        {item.estimatedCost.toLocaleString()}
+                                                    </td>
+                                                    <td>
+                                                        {item.shutdownRequirement}
+                                                    </td>
+                                                    <td>
+                                                        {item.targetImplementationDate instanceof Date
+                                                            ? item.targetImplementationDate.toLocaleDateString()
+                                                            : new Date(item.targetImplementationDate).toLocaleDateString()}
+                                                    </td>
+                                                    <td>
+                                                        {item.actualImplementationDate instanceof Date
+                                                            ? item.actualImplementationDate.toLocaleDateString()
+                                                            : new Date(item.actualImplementationDate).toLocaleDateString()}
+                                                    </td>
+                                                    <td>
+                                                        {item.ageOfRecommendation}
+                                                    </td>
+                                                    <td>
+                                                        {item.benefitAnalysisTargetDate instanceof Date
+                                                            ? item.benefitAnalysisTargetDate.toLocaleDateString()
+                                                            : new Date(item.benefitAnalysisTargetDate).toLocaleDateString()}
+                                                    </td>
+                                                    <td>
+                                                        {item.numberOfOverdueDays}
+                                                    </td>
+                                                    <td>
+                                                        {item.recommendationInitiatedBy}
+                                                    </td>
+                                                    <td>
+                                                        {item.discussedWithHOD}{" - "}{item.dateOfDiscussion instanceof Date
+                                                            ? item.dateOfDiscussion.toLocaleDateString()
+                                                            : new Date(item.dateOfDiscussion).toLocaleDateString()}
+                                                    </td>
+                                                    <td>
+                                                        {item.responsiblePersonForClosure}
+                                                    </td>                   
                                                     <td>
                                                         {item.status}
                                                     </td>
+                                                    <td>{item.reasonForRejection}{item.rejectedBy}</td>
+                                                    <td>{item.eligibleForRecommendation}</td>
+                                                    <td>{item.remarks}</td>
                                                     <td>
                                                         <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
                                                             <Link href={`/recmd-tracker/update-recommendation?id=${item.id}`}>
