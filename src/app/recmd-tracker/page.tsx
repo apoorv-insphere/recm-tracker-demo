@@ -565,38 +565,38 @@ const RecommendationTracker = () => {
                                 <table className="table">
                                     <thead>
                                         <tr>
-                                            <th >S no</th>
-                                            <th >Date of Recommendation</th>
-                                            <th >Recommendation ID.</th>
-                                            <th>Recommendation Type</th>
-                                            <th>Source</th>
-                                            <th>SP</th>
-                                            <th>Equipment ID/Type/Desc</th>
-                                            <th>Description</th>
-                                            <th>Repair/Replacement Required</th>
-                                            <th>Consequence Type</th>
-                                            <th>Consequence/Likelihood/Risk Score (Initial)</th>
-                                            <th>Injury Potential</th>
-                                            <th>Asset Cost</th>
-                                            <th>Cost of Production lost PD</th>
-                                            <th>Potential Risk Impact (Min/Medium/Max)</th>
-                                            <th>Consequence/Likelihood/Risk Score (Final)</th>
-                                            <th>Benefits</th>
-                                            <th>Est. Cost (in Cr)</th>
-                                            <th>Shutdown</th>
-                                            <th>Tgt Date</th>
-                                            <th>Actual Implementation Date</th>
-                                            <th>Age</th>
-                                            <th>Benefit Analysis Tgt Date</th>
-                                            <th>Total Overdue Days</th>
-                                            <th>Initiated By</th>
-                                            <th>Discussed with HOD/Discussion Date</th>
-                                            <th>Responsible Person</th>
-                                            <th >Status</th>
-                                            <th>Is Rejected/Reason/Rejected By</th>
-                                            <th>Eligible for Recommendation</th>
-                                            <th>Remarks (Any)</th>
-                                            <th>Action</th>
+                                            <th className="small" >S no</th>
+                                            <th className="small" >Recommendation Date</th>
+                                            <th className="small" style={{ minWidth: "150px" }} >Recommendation ID.</th>
+                                            <th className="small">Recommendation Type</th>
+                                            <th className="small">Source</th>
+                                            <th className="small">Dept</th>
+                                            <th className="small">Equipment ID/Type/Desc</th>
+                                            <th className="small" style={{ minWidth: "400px" }}>Description</th>
+                                            <th className="small">Repair/Replacement Required</th>
+                                            <th className="small">Consequence Type</th>
+                                            <th className="small">Consequence/Likelihood/Risk Score (Initial)</th>
+                                            <th className="small">Injury Potential</th>
+                                            <th className="small">Asset Cost</th>
+                                            <th className="small">Cost of Production lost PD</th>
+                                            <th className="small">Potential Risk (Min/Medium/Max)</th>
+                                            <th className="small">Consequence/Likelihood/Risk Score (Final)</th>
+                                            <th className="small" style={{ minWidth: "200px" }}>Benefits</th>
+                                            <th className="small">Est. Cost (in Cr)</th>
+                                            <th className="small">Shutdown</th>
+                                            <th className="small">Tgt Date</th>
+                                            <th className="small">Actual Implementation Date</th>
+                                            <th className="small">Age</th>
+                                            <th className="small">Benefit Analysis Tgt Date</th>
+                                            <th className="small">Total Overdue Days</th>
+                                            <th className="small">Initiated By</th>
+                                            <th className="small">Discussed with HOD/Discussion Date</th>
+                                            <th className="small">Responsible Person</th>
+                                            <th className="small">Status</th>
+                                            <th className="small">Is Rejected/Reason/Rejected By</th>
+                                            <th className="small">Eligible for Recommendation</th>
+                                            <th className="small" style={{ minWidth: "200px" }}>Remarks (Any)</th>
+                                            <th className="small">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -616,7 +616,7 @@ const RecommendationTracker = () => {
                                                     <td>{item.recommendationType}</td>
                                                     <td>{item.source}</td>
                                                     <td>{item.plantName}</td>
-                                                    <td>{item.equipmentType}{" - "}{item.equipmentId}{" - "}{item.equipmentDesc}</td>
+                                                    <td>{item.equipmentId}/{item.equipmentType}</td>
                                                     <td >{item.recommendationDescription}</td>
                                                     <td>{item.repairreplacementrequired}</td>
                                                     <td>{item.consequenceSelectionType}</td>
